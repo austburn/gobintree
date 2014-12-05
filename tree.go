@@ -1,6 +1,7 @@
 package main
 
 import "strconv"
+import "math"
 
 type Node struct {
     value int
@@ -36,6 +37,26 @@ func addNode(n *Node, leaf *Node) *Node {
         n.rightNode = addNode(n.rightNode, leaf)
     }
     return n
+}
+
+func getDepth(n *Node) float64 {
+    return depth(root, 0)
+}
+
+func depth(n *Node, d float64) float64 {
+    if n == nil {
+        return d
+    } else {
+        d = d + 1
+    }
+
+    if n.leftNode != nil && n.rightNode != nil {
+        return math.Max(depth(n.leftNode, d), depth(n.rightNode, d))
+    } else if n.leftNode != nil {
+        return depth(n.leftNode, d)
+    } else {
+        return depth(n.rightNode, d)
+    }
 }
 
 func getPreOrderTraversal(n *Node) string {

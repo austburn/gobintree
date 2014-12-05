@@ -151,3 +151,56 @@ func TestInOrderTraversal(t *testing.T) {
 
     clearRoot()
 }
+
+func TestDepth(t *testing.T) {
+    initDepth := getDepth(root)
+
+    if initDepth != 0 {
+        t.Errorf("Initial depth should be 0")
+    }
+
+    add(5)
+    //5
+    postOneAdd := getDepth(root)
+    if postOneAdd != 1 {
+        t.Errorf("Depth after add should be 1")
+    }
+
+    add(1)
+    add(7)
+    //1     5
+    //2  1     7
+    if getDepth(root) != 2 {
+        t.Errorf("Depth after add should be 2")
+    }
+
+    add(2)
+    //1     5
+    //2  1     7
+    //3   2
+    if getDepth(root) != 3 {
+        t.Errorf("Depth after add should be 3")
+    }
+
+    add(3)
+    //1      5
+    //2   1      7
+    //3    2
+    //4     3
+    if getDepth(root) != 4 {
+        t.Errorf("Depth after add should be 3")
+    }
+
+    add(8)
+    add(6)
+    add(11)
+    add(10)
+    //1      5
+    //2   1      7
+    //3    2    6   8
+    //4     3         11
+    //5              10
+    if getDepth(root) != 5 {
+        t.Errorf("Depth after add should be 5")
+    }
+}
