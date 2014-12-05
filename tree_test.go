@@ -102,7 +102,7 @@ func TestPreOrderTraversal(t *testing.T) {
     add(7)
     add(4)
 
-    preOrder := getPreOrderTraversal(root)
+    preOrder := getPreOrderTraversal()
     expectedPreOrder := "51234687"
 
     if preOrder != expectedPreOrder {
@@ -122,7 +122,7 @@ func TestPostOrderTraversal(t *testing.T) {
     add(7)
     add(4)
 
-    postOrder := getPostOrderTraversal(root)
+    postOrder := getPostOrderTraversal()
     expectedPostOrder := "43217865"
 
     if postOrder != expectedPostOrder {
@@ -142,7 +142,7 @@ func TestInOrderTraversal(t *testing.T) {
     add(7)
     add(4)
 
-    inOrder := getInOrderTraversal(root)
+    inOrder := getInOrderTraversal()
     expectedInOrder := "12345678"
 
     if inOrder != expectedInOrder {
@@ -153,16 +153,13 @@ func TestInOrderTraversal(t *testing.T) {
 }
 
 func TestDepth(t *testing.T) {
-    initDepth := getDepth(root)
-
-    if initDepth != 0 {
+    if getDepth() != 0 {
         t.Errorf("Initial depth should be 0")
     }
 
     add(5)
     //5
-    postOneAdd := getDepth(root)
-    if postOneAdd != 1 {
+    if getDepth() != 1 {
         t.Errorf("Depth after add should be 1")
     }
 
@@ -170,7 +167,7 @@ func TestDepth(t *testing.T) {
     add(7)
     //1     5
     //2  1     7
-    if getDepth(root) != 2 {
+    if getDepth() != 2 {
         t.Errorf("Depth after add should be 2")
     }
 
@@ -178,7 +175,7 @@ func TestDepth(t *testing.T) {
     //1     5
     //2  1     7
     //3   2
-    if getDepth(root) != 3 {
+    if getDepth() != 3 {
         t.Errorf("Depth after add should be 3")
     }
 
@@ -187,7 +184,7 @@ func TestDepth(t *testing.T) {
     //2   1      7
     //3    2
     //4     3
-    if getDepth(root) != 4 {
+    if getDepth() != 4 {
         t.Errorf("Depth after add should be 3")
     }
 
@@ -200,7 +197,7 @@ func TestDepth(t *testing.T) {
     //3    2    6   8
     //4     3         11
     //5              10
-    if getDepth(root) != 5 {
+    if getDepth() != 5 {
         t.Errorf("Depth after add should be 5")
     }
 }

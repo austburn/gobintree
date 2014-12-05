@@ -39,7 +39,7 @@ func addNode(n *Node, leaf *Node) *Node {
     return n
 }
 
-func getDepth(n *Node) float64 {
+func getDepth() float64 {
     return depth(root, 0)
 }
 
@@ -59,7 +59,7 @@ func depth(n *Node, d float64) float64 {
     }
 }
 
-func getPreOrderTraversal(n *Node) string {
+func getPreOrderTraversal() string {
     return preOrderTraversal(root, "")
 }
 
@@ -81,7 +81,7 @@ func preOrderTraversal(n *Node, s string) string {
     return s
 }
 
-func getPostOrderTraversal(n *Node) string {
+func getPostOrderTraversal() string {
     return postOrderTraversal(root, "")
 }
 
@@ -103,7 +103,7 @@ func postOrderTraversal(n *Node, s string) string {
     return s
 }
 
-func getInOrderTraversal(n *Node) string {
+func getInOrderTraversal() string {
     return inOrderTraversal(root, "")
 }
 
