@@ -1,11 +1,13 @@
 package main
 
-import "strconv"
-import "math"
+import (
+    "math"
+    "strconv"
+)
 
 type Node struct {
-    value int
-    leftNode *Node
+    value     int
+    leftNode  *Node
     rightNode *Node
 }
 
@@ -37,6 +39,26 @@ func addNode(n *Node, leaf *Node) *Node {
         n.rightNode = addNode(n.rightNode, leaf)
     }
     return n
+}
+
+func search(x int) int {
+    return searchPrivate(x, root)
+}
+
+func searchPrivate(x int, n *Node) int {
+    if n == nil {
+        return -1
+    }
+
+    if n.value == x {
+        return n.value
+    }
+
+    if n.value > x {
+        return searchPrivate(x, n.leftNode)
+    } else {
+        return searchPrivate(x, n.rightNode)
+    }
 }
 
 func getDepth() float64 {

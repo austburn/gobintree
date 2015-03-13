@@ -3,8 +3,14 @@ package main
 import "testing"
 
 func TestRootInit(t *testing.T) {
+    x := search(4)
+
     if root != nil {
         t.Errorf("root should be undefined to start")
+    }
+
+    if x != -1 {
+        t.Errorf("Empty tree search should return -1")
     }
 }
 
@@ -13,6 +19,11 @@ func TestRootInitialAdd(t *testing.T) {
 
     if root.value != 8 {
         t.Errorf("Intial add does not seem to be working.")
+    }
+
+    x := search(8)
+    if x != 8 {
+        t.Errorf("should be able to find 8")
     }
 
     clearRoot()
@@ -38,6 +49,11 @@ func TestAddToLeftTree(t *testing.T) {
         t.Errorf("leftNode was created but does not contain the right value")
     }
 
+    x, y := search(5), search(1)
+    if x != 5 || y != 1 {
+        t.Errorf("Search failed")
+    }
+
     clearRoot()
 }
 
@@ -59,6 +75,11 @@ func TestAddToRightTree(t *testing.T) {
 
     if root.rightNode != nil && root.rightNode.value != 5 {
         t.Errorf("rightNode was created but does not contain the right value")
+    }
+
+    x, y := search(5), search(1)
+    if x != 5 || y != 1 {
+        t.Errorf("Search failed")
     }
 
     clearRoot()
@@ -127,6 +148,11 @@ func TestPostOrderTraversal(t *testing.T) {
 
     if postOrder != expectedPostOrder {
         t.Errorf("Postorder traversal is incorrect, got %v, but expected %v", postOrder, expectedPostOrder)
+    }
+
+    random_search := search(6)
+    if random_search != 6 {
+        t.Errorf("Search failed")
     }
 
     clearRoot()
